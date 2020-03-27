@@ -56,3 +56,27 @@ def salt_sub_minion(request, salt_factories, salt_master):
 #                               salt_minion):
 #
 #    yield
+
+@pytest.fixture(scope='package')
+def salt_cli(salt_factories, salt_minion, salt_master):
+    return salt_factories.get_salt_cli(salt_master.config["id"])
+
+
+@pytest.fixture(scope='package')
+def salt_cp_cli(salt_factories, salt_minion, salt_master):
+    return salt_factories.get_salt_cp_cli(salt_master.config["id"])
+
+
+@pytest.fixture(scope='package')
+def salt_key_cli(salt_factories, salt_minion, salt_master):
+    return salt_factories.get_salt_key_cli(salt_master.config["id"])
+
+
+@pytest.fixture(scope='package')
+def salt_run_cli(salt_factories, salt_minion, salt_master):
+    return salt_factories.get_salt_run_cli(salt_master.config["id"])
+
+
+@pytest.fixture(scope='package')
+def salt_call_cli(salt_factories, salt_minion, salt_master):
+    return salt_factories.get_salt_call_cli(salt_minion.config["id"])
