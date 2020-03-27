@@ -47,12 +47,12 @@ def salt_sub_minion(request, salt_factories, salt_master):
     return salt_factories.spawn_minion(request, 'sub_minion', master_id='master')
 
 
-@pytest.fixture(scope='package', autouse=True)
-def bridge_pytest_and_runtests(bridge_pytest_and_runtests,
-                               salt_factories,
-                               # salt_syndic_master,
-                               # salt_syndic,
-                               salt_master,
-                               salt_minion):
-
-    yield
+#@pytest.fixture(scope='package', autouse=True)
+#def bridge_pytest_and_runtests(bridge_pytest_and_runtests,
+#                               salt_factories,
+#                               # salt_syndic_master,
+#                               # salt_syndic,
+#                               salt_master,
+#                               salt_minion):
+#
+#    yield

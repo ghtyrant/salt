@@ -36,6 +36,7 @@ from tests.support.paths import INTEGRATION_TEST_DIR, CODE_DIR, PYEXEC, SCRIPT_D
 from tests.support.cli_scripts import ScriptPathMixin
 
 # Import 3rd-party libs
+import pytest
 from salt.ext import six
 from salt.ext.six.moves import cStringIO  # pylint: disable=import-error
 from saltfactories.utils.processes.helpers import terminate_process
@@ -48,6 +49,7 @@ STATE_FUNCTION_RUNNING_RE = re.compile(
 log = logging.getLogger(__name__)
 
 
+@pytest.mark.usefixtures('salt_master', 'salt_minion', 'salt_sub_minion')
 class ShellTestCase(TestCase, AdaptedConfigurationTestCaseMixin, ScriptPathMixin):
     '''
     Execute a test for a shell command
@@ -433,6 +435,7 @@ class MultiMasterTestShellCase(ShellTestCase):
         return RUNTIME_VARS.TMP_MM_CONF_DIR
 
 
+@pytest.mark.usefixtures('salt_master', 'salt_minion', 'salt_sub_minion')
 class ShellCase(ShellTestCase, AdaptedConfigurationTestCaseMixin, ScriptPathMixin):
     '''
     Execute a test for a shell command
@@ -633,6 +636,7 @@ class SPMTestUserInterface(object):
         self._error.append(msg)
 
 
+@pytest.mark.usefixtures('salt_master', 'salt_minion', 'salt_sub_minion')
 class SPMCase(TestCase, AdaptedConfigurationTestCaseMixin):
     '''
     Class for handling spm commands
@@ -739,6 +743,7 @@ class SPMCase(TestCase, AdaptedConfigurationTestCaseMixin):
         return self.ui._status
 
 
+@pytest.mark.usefixtures('salt_master', 'salt_minion', 'salt_sub_minion')
 class ModuleCase(TestCase, SaltClientTestCaseMixin):
     '''
     Execute a module function
